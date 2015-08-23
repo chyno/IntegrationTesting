@@ -1,9 +1,8 @@
-﻿import {inject} from "aurelia-framework";
-import {HttpClient} from "aurelia-http-client";
+﻿
 
 let baseUrl = "/api/test";
 
-@inject(HttpClient)
+//@inject(HttpClient)
 export class testData {
 
     constructor(httpClient) {
@@ -21,14 +20,7 @@ export class testData {
     }
 
     save(test) {
-        var request = this.http.createRequest();
-        request.asPut()
-               .withUrl(baseUrl)
-               .withHeader("Accept", "application/json")
-               .withHeader("Content-Type", "application/json")
-               .withContent(test);
-
-        return request.send().then(response => response.content); //lklkkk
+         
 
     }
 

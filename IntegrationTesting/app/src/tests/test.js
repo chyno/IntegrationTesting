@@ -1,6 +1,6 @@
 ﻿export class Test
 {
-    TestName = "";
+    TestName = "ee";
 
     activate (model)
     {
