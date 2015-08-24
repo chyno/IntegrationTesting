@@ -2,6 +2,7 @@ import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 
 export class App {
+    currentApplication = 'RS';
   configureRouter(config, router){
     config.title = 'Contract Testing';
     config.map([
