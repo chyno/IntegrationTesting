@@ -3,11 +3,12 @@ import 'bootstrap/css/bootstrap.css!';
 
 export class App {
   configureRouter(config, router){
-    config.title = 'Aurelia';
+    config.title = 'Contract Testing';
     config.map([
-      { route: ['','tests-runner'],  name: 'tests',      moduleId: 'tests/tests-runner',      nav: true, title:'Run Test' },
-      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title:'Github Users' },
-      { route: 'child-router',  name: 'child-router', moduleId: 'child-router', nav: true, title:'Child Router' }
+      { route: ['','tests-runner'],  name: 'tests-runner',      moduleId: 'tests/tests-runner',      nav: true, title:'Run Test' },
+      { route: 'tests-manage',         name: 'tests-manage',        moduleId: 'tests/tests-manage',        nav: true, title:'Add Edit Tests' },
+      { route: 'tests-documentation',  name: 'tests-documentation', moduleId: 'tests/tests-documentation', nav: true, title:'Documentation' },
+      { route: 'tests-admin',  name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title:'Admin' },
     ]);
 
     this.router = router;

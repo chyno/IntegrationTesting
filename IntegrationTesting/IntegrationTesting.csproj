@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -190,24 +192,61 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\aurelia.protractor.js" />
+    <Content Include="app\aureliafile.js" />
+    <Content Include="app\build\args.js" />
+    <Content Include="app\build\babel-options.js" />
+    <Content Include="app\build\paths.js" />
+    <Content Include="app\build\tasks\build.js" />
+    <Content Include="app\build\tasks\clean.js" />
+    <Content Include="app\build\tasks\dev.js" />
+    <Content Include="app\build\tasks\doc.js" />
+    <Content Include="app\build\tasks\e2e.js" />
+    <Content Include="app\build\tasks\lint.js" />
+    <Content Include="app\build\tasks\prepare-release.js" />
+    <Content Include="app\build\tasks\serve.js" />
+    <Content Include="app\build\tasks\test.js" />
+    <Content Include="app\build\tasks\watch.js" />
+    <Content Include="app\config.js" />
+    <Content Include="app\gulpfile.js" />
+    <Content Include="app\karma.conf.js" />
+    <Content Include="app\protractor.conf.js" />
     <Content Include="app\src\app.html" />
     <Content Include="app\src\app.js" />
     <Content Include="app\src\blur-image.js" />
     <Content Include="app\src\child-router.html" />
     <Content Include="app\src\child-router.js" />
-    <Content Include="app\src\compnent\test-data.js" />
+    <Content Include="app\src\resources\contracts.html" />
+    <Content Include="app\src\resources\contracts.js" />
     <Content Include="app\src\main.js" />
     <Content Include="app\src\nav-bar.html" />
     <Content Include="app\src\nav-bar.js" />
+    <Content Include="app\src\resources\index.js" />
     <Content Include="app\src\tests\test.html" />
     <Content Include="app\src\tests\test.js" />
     <Content Include="app\src\tests\testData.js" />
+    <Content Include="app\src\tests\tests-admin.html" />
+    <Content Include="app\src\tests\tests-admin.js" />
+    <Content Include="app\src\tests\tests-documentation.html" />
+    <Content Include="app\src\tests\tests-documentation.js" />
+    <Content Include="app\src\tests\tests-manage.html" />
+    <Content Include="app\src\tests\tests-manage.js" />
     <Content Include="app\src\tests\tests-runner.html" />
     <Content Include="app\src\tests\tests-runner.js" />
     <Content Include="app\src\users.html" />
     <Content Include="app\src\users.js" />
     <Content Include="app\src\welcome.html" />
     <Content Include="app\src\welcome.js" />
+    <Content Include="app\styles\styles.css" />
+    <Content Include="app\test\e2e\dist\demo.spec.js" />
+    <Content Include="app\test\e2e\dist\skeleton.po.js" />
+    <Content Include="app\test\e2e\dist\welcome.po.js" />
+    <Content Include="app\test\e2e\src\demo.spec.js" />
+    <Content Include="app\test\e2e\src\skeleton.po.js" />
+    <Content Include="app\test\e2e\src\welcome.po.js" />
+    <Content Include="app\test\unit\app.spec.js" />
+    <Content Include="app\test\unit\child-router.spec.js" />
+    <Content Include="app\test\unit\users.spec.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -216,6 +255,10 @@
     <Content Include="app\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="app\jsconfig.json" />
+    <Content Include="app\LICENSE" />
+    <Content Include="app\package.json" />
+    <Content Include="app\README.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -240,6 +283,7 @@
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\jspm_packages\github\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -250,11 +294,15 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

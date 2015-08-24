@@ -5,6 +5,8 @@ let baseUrl = "/api/test";
 //@inject(HttpClient)
 export class testData {
 
+    CurrrentApplication = "RS";
+
     constructor(httpClient) {
         this.http = httpClient;
     }
