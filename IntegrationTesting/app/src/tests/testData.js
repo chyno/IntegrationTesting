@@ -5,10 +5,11 @@ let baseUrl = "/api/test";
 //@inject(HttpClient)
 export class testData {
 
-    CurrrentApplication = "RS";
-
+    
     constructor(httpClient) {
         this.http = httpClient;
+        this.CurrrentApplication = "RS";
+        this.CurrrentContract = "Find Beneficiary";
     }
 
     getById(id) {

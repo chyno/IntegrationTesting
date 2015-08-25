@@ -4,10 +4,9 @@
     
   <nav-bar router.bind="router"></nav-bar>
 
-  <div class="page-host">
-      <span>Application - ${ currentApplication}</span>
-      <button click.trigger="changeApplication()">Change Application to BW</button>
-
-    <router-view></router-view>
-  </div>
+    <div class="page-host">
+        <contracts></contracts>
+         
+        <router-view></router-view>
+    </div>
 </template>

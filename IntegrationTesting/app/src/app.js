@@ -2,12 +2,7 @@ import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
 
 export class App {
-    currentApplication = 'RS';
-
-    changeApplication() {
-        this.currentApplication = "BW";
-        console.log("Current application is: " + this.currentApplication);
-    }
+    
   configureRouter(config, router){
     config.title = 'Contract Testing';
     config.map([

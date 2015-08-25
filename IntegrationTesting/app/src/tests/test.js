@@ -1,9 +1,26 @@
 ﻿export class Test
 {
-    TestName = "ee";
 
-    activate (model)
-    {
-        this.TestName = model.TestName;
+    TestNumber = "44";
+
+    constructor() {
+        this.ShowTestResults = false;
+        this.model = null;
     }
+
+    activate (model) {
+        
+        this.model = model;
+    }
+    saveTest() {
+    }
+
+    runTest() {
+        
+    }
+
+    refreshTest() {
+        
+    }
+
 }

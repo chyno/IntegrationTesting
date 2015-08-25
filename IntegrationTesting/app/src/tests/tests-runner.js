@@ -4,13 +4,38 @@ import {TestData} from "./testData";
 inject(TestData)
 export class TestsRunner
 {
-    Tests = [{id: 1, TestName: "test 1"}, {id: 2, TestName: "test 2"}, {id: 3, TestName: "test 3"}];
-    constructor(testData) {        
-        this.testData = testData;
+    
+   
+
+    constructor() {        
+        this.Tests = [
+         {
+             TestRequestFileId: 1,
+             InputJson : "{foo : 'b'}",
+             TestNumber : "1", 
+             TestFileDescription: 'test file', 
+             TestName: "test 1",
+             EditInputJson : ""
+         }
+        ];     
     }
 
-    activate() {
-        
+    activate()
+    {
+        this.ShowTests = false;
+        this.TestToRun = "*";
     }
-    
+
+    showTests()
+    {
+        this.ShowTests = true;
+       
+    }
+
+
+    hideTests()
+    {
+        this.ShowTests = false;
+       
+    }
 }
