@@ -13,9 +13,11 @@ export class TestsRunner
              TestRequestFileId: 1,
              InputJson : "{foo : 'b'}",
              TestNumber : "1", 
-             TestFileDescription: 'test file', 
+             TestFileDescription: 'test file description for test 1', 
              TestName: "test 1",
-             EditInputJson : ""
+             EditInputJson : "{foo : 'b'}",
+             ActualOutput : "n/a",
+             OutputJson : "{foo:'success'}"
          }
         ];     
     }

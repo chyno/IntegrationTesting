@@ -1,8 +1,7 @@
 ﻿export class Test
 {
 
-    TestNumber = "44";
-
+   
     constructor() {
         this.ShowTestResults = false;
         this.model = null;
@@ -16,11 +15,11 @@
     }
 
     runTest() {
-        
+        this.ShowTestResults = true;
     }
 
     refreshTest() {
-        
+        this.ShowTestResults = false;
     }
 
 }
