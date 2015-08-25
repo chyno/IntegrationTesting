@@ -4,8 +4,14 @@
     <nav-bar router.bind="router"></nav-bar>
 
     <div class="page-host">
-        <contracts></contracts>
-
-        <router-view></router-view>
+        <div class="container body-content">
+            <contracts></contracts>
+            <div class="panel panel-group">
+                <router-view></router-view>
+            </div>
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> -Integration Testing</p>
+            </footer>
+        </div>
     </div>
 </template>
