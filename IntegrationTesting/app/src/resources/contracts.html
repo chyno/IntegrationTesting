@@ -1,3 +1,15 @@
 ﻿<template>
-    <p>Select a contract </p>
+    <p>Here you can run existing tests and edit the current request</p>
+
+    <label class="rs-label">Contract: </label>
+    <select style="min-width: 350px" data-bind="options: contracts, value: selectedContract, optionsText: 'ContractName', optionsName: contracts, optionsCaption: 'Choose ...', event: { change: selectContract }" class="form-control"></select>
+
+    <div data-bind="visible: selectedContract()" class="form-group">
+
+        <label class="rs-label rs-nextcontrol">Test Number: </label>
+        <input type="text" data-bind="value: TestToRun" class="form-control" />
+        <button data-bind="click: showTests" class="btn btn-primary rs-nextcontrol">Show Tests</button>
+    </div>
+
+    <button class="btn btn-secondary bottom-right pull-right" data-bind="click: refreshData">Restore Database</button>
 </template>
