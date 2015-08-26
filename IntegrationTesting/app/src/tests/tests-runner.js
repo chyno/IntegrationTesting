@@ -4,6 +4,7 @@ import {TestData} from "./testData";
 inject(TestData)
 export class TestsRunner
 {
+<<<<<<< HEAD
     
    
 
@@ -20,6 +21,12 @@ export class TestsRunner
              OutputJson : "{foo:'success'}"
          }
         ];     
+=======
+    Tests = [{id: 1, TestName: "test 1"}, {id: 2, TestName: "test 2"}, {id: 3, TestName: "test 3"}];
+    constructor(testData) {        
+        this.testData = testData;
+        this.TestToRun = "*";
+>>>>>>> af2f07ce1464adfb86d1c8993f834dcaca78730c
     }
 
     activate()
@@ -40,4 +47,11 @@ export class TestsRunner
         this.ShowTests = false;
        
     }
+<<<<<<< HEAD
+=======
+    
+    showTests() {
+
+    }
+>>>>>>> af2f07ce1464adfb86d1c8993f834dcaca78730c
 }
