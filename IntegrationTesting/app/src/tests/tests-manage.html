@@ -2,13 +2,6 @@
     <p>Here you can perform CRUD operations on the tests.</p>
 
     <div data-bind="visible: !shouldShowTest()">
-
-        <div class="form-inline">
-            <label class="rs-label">Contract: </label>
-            <select style="min-width: 300px" data-bind="options: contracts, value: selectedContract, optionsText: 'ContractName', optionsName: contracts, optionsCaption: 'Choose ...', event: { change: chooseContract }" class="form-control"></select>
-            <!--        <select data-bind="options: contracts, value: selectedContract, optionsName: contracts, optionsCaption: 'Choose ...'" class="form-control"></select> -->
-
-        </div>
         <div data-bind="visible: selectedContract()">
             <div class="form-inline" style="margin-top: 20px">
                 <button data-bind="click: addNew" class="btn btn-primary">Add</button>

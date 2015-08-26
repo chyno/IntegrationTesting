@@ -1,22 +1,26 @@
 ﻿<template>
- 
-    <h1>Application and Contracts</h1>
-    <label class="rs-label">Application: </label>
-    <select value.bind="selectedApplicatin" class="form-control">
-        <option>Select An Application</option>
-        <option repeat.for="application of applications">${application.ApplicationName}</option>
-    </select>
-    <button class="btn btn-secondary bottom-right " click.trigger="selectApplication()">Choose Application</button>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputType" class="col-md-2 control-label">Application:</label>
+            <div class="col-md-3">
 
-    <button class="btn btn-secondary bottom-right " click.trigger="selectContract()">Choose Contract</button>
+                <select value.bind="selectedApplicatin" class="form-control">
+                    <option>Select...</option>
+                    <option repeat.for="application of applications">${application.ApplicationName}</option>
+                </select>
 
-    <label class="rs-label">Contract: </label>
-    <select value.bind="selectedContract" class="form-control">
-        <option>Select A Contract</option>
-        <option repeat.for="contract of contracts" >${contract.ContractName}</option>
-    </select>
+            </div>
 
-   <button class="btn btn-secondary bottom-right " click.trigger="selectContract()" >Choose Contract</button>
- 
-     
+            <label class="col-md-2 control-label">Contract: </label>
+            <div class="col-md-3">
+                <select value.bind="selectedContract" class="form-control">
+                    <option>Select ...</option>
+                    <option repeat.for="contract of contracts">${contract.ContractName}</option>
+                </select>
+            </div>
+        </div>
+
+
+    </form>
+
 </template>

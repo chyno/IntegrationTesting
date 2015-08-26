@@ -1,41 +1,24 @@
 ﻿<template>
- 
+
     <div class="form-horizontal" role="form">
 
         <p>Here you can run existing tests and edit the current request</p>
 
-
-<<<<<<< HEAD
         <div class="form-group">
 
             <label class="rs-label rs-nextcontrol">Test Number: </label>
             <input type="text" value.bind="TestToRun" class="form-control" />
             <button click.trigger="showTests()" class="btn btn-primary rs-nextcontrol">Show Tests</button>
         </div>
-=======
-       
->>>>>>> af2f07ce1464adfb86d1c8993f834dcaca78730c
 
-        <div show.bind="ShowTests" >
+
+        <div show.bind="ShowTests">
             <!-- <div class="form-horizontal" data-bind="template: { name: 'tests-template', foreach: TestItems }"></div> -->
             <template repeat.for="test of Tests">
-
-<<<<<<< HEAD
                 <compose model.bind="test" view-model="./test">
                 </compose>
             </template>
-=======
-     
->>>>>>> af2f07ce1464adfb86d1c8993f834dcaca78730c
-
-           
         </div>
     </div>
-
-   
-
-    
-
-
 
 </template> 
