@@ -18,7 +18,7 @@
     <AssemblyName>IntegrationTesting</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -180,6 +180,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApplicaitonController.cs" />
     <Compile Include="Controllers\ContractsController.cs" />
     <Compile Include="Controllers\DbRefreshController.cs" />
     <Compile Include="Controllers\TestAddController.cs" />
@@ -193,6 +194,7 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Application.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\TestItem.cs" />
     <Compile Include="Models\TtestContract.cs" />
@@ -236,7 +238,7 @@
     <Content Include="app\src\resources\index.js" />
     <Content Include="app\src\tests\test.html" />
     <Content Include="app\src\tests\test.js" />
-    <Content Include="app\src\tests\testData.js" />
+    <Content Include="app\src\testData.js" />
     <Content Include="app\src\tests\tests-admin.html" />
     <Content Include="app\src\tests\tests-admin.js" />
     <Content Include="app\src\tests\tests-documentation.html" />
@@ -245,10 +247,6 @@
     <Content Include="app\src\tests\tests-manage.js" />
     <Content Include="app\src\tests\tests-runner.html" />
     <Content Include="app\src\tests\tests-runner.js" />
-    <Content Include="app\src\users.html" />
-    <Content Include="app\src\users.js" />
-    <Content Include="app\src\welcome.html" />
-    <Content Include="app\src\welcome.js" />
     <Content Include="app\styles\appstyles.css" />
     <Content Include="app\styles\styles.css" />
     <Content Include="app\test\e2e\dist\demo.spec.js" />
@@ -313,7 +311,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>19486</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:19486/</IISUrl>
+          <IISUrl>http://localhost/IntegrationTesting2</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

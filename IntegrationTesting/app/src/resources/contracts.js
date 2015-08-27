@@ -1,11 +1,26 @@
-﻿export class Contracts
+﻿import {inject} from "aurelia-framework";
+import {TestData} from "../testData";
+
+@inject(TestData)
+export class Contracts
 { 
-    constructor()
+    constructor(testData)
     {
         this.selectedContract = null ;
-        this.selectedApplicaiton = null ;
-        this.contracts = [{Id : 1, ContractName :"FindBeneficiary" }, {Id : 2, ContractName : "Add Beneficiary" }];
-        this.applications = [{Id : 1, ApplicationName : "RS" }, {Id : 2, ApplicationName : "BW" }];
+        this.selectedApplication = null ;
+        //this.contracts = [{Id : 1, ContractName :"FindBeneficiary" }, {Id : 2, ContractName : "Add Beneficiary" }];
+        this.data = testData;
+        this.data.getApplications().then(apps => 
+        {  
+            
+            console.log("*** In constructor");
+            this.applications = apps;
+            var curapp = this.applications[0];
+            this.selectedApplication = curapp.ApplicationName;
+           this.data.getContracts(curapp.Id).then(contracts => {this.contracts = contracts; });
+            
+
+        }); 
     }
     
     selectContract()
@@ -18,5 +33,13 @@
     {
         alert('Selected Applicaiotn parent: ' + this.selectedApplicaiton);
     }
+
+    appChanged(e)
+    {
+       // var curapp = this.applications[1];
+        alert(e);
+       // this.data.getContracts(curapp.Id).then(contracts => {this.contracts = contracts; });
+    }
+  
 }
            

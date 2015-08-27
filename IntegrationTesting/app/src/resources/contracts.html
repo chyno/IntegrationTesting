@@ -4,11 +4,11 @@
             <label for="inputType" class="col-md-2 control-label">Application:</label>
             <div class="col-md-3">
 
-                <select value.bind="selectedApplicatin" class="form-control">
-                    <option>Select...</option>
+                <select prefix="selectedApplication" value.bind="selectedApplication" class="form-control" >
+                   
                     <option repeat.for="application of applications">${application.ApplicationName}</option>
                 </select>
-
+                <button click.trigger="selectApplication()">Select Application</button>
             </div>
 
             <label class="col-md-2 control-label">Contract: </label>
@@ -17,6 +17,7 @@
                     <option>Select ...</option>
                     <option repeat.for="contract of contracts">${contract.ContractName}</option>
                 </select>
+                <button click.trigger="selectCOntract()">Select Contracts</button>
             </div>
         </div>
 
