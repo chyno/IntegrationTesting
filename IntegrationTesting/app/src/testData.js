@@ -55,13 +55,29 @@ export class TestData {
 
     getContracts(appId)
     {
+        var rsContrantracts =  [{ ContractName : "Find Ben RS", ContractId : 1 },  { ContractName : "Add Ben Gems", ContractId : 2 }];
+        var bwContrantracts =  [{ ContractName : "Find Ben BW", ContractId : 1 },  { ContractName : "Add Ben GBW", ContractId : 2 }];
+
+        var p1 = new Promise(function(resolve, reject) { 
+            if (appId === 1)
+            {
+                resolve(rsContrantracts);
+            }
+            else
+            {
+                resolve(bwContrantracts);
+            }
+            
+        });
+        return p1;
+
         console.log("******** getting contracts *****");
-        var url = baseContractsUrl + appId;
-        console.log(url);
-        return this.http
-            .get(url)
-                        .then(response => {
-                            return response.content;
-                        });
+      //  var url = baseContractsUrl + appId;
+       // console.log(url);
+       // return this.http
+        //    .get(url)
+        //                .then(response => {
+         //                   return response.content;
+          //              });
     }
 }

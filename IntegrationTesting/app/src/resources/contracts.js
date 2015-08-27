@@ -23,23 +23,17 @@ export class Contracts
         }); 
     }
     
-    selectContract()
-    {
-        alert('Selected Contract parent: ' + this.selectedContract);
-    }
-
-
     selectApplication()
     {
-        alert('Selected Applicaiotn parent: ' + this.selectedApplicaiton);
+        alert('Selected Application : ' + this.selectedApplication);
     }
 
-    appChanged(e)
+
+    selectContract()
     {
-       // var curapp = this.applications[1];
-        alert(e);
-       // this.data.getContracts(curapp.Id).then(contracts => {this.contracts = contracts; });
+        alert('Selected Contracts : '  + selectedContract);
     }
+
   
 }
            

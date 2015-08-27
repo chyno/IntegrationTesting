@@ -1,24 +1,20 @@
 ﻿<template>
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputType" class="col-md-2 control-label">Application:</label>
-            <div class="col-md-3">
-
-                <select prefix="selectedApplication" value.bind="selectedApplication" class="form-control" >
-                   
-                    <option repeat.for="application of applications">${application.ApplicationName}</option>
-                </select>
-                <button click.trigger="selectApplication()">Select Application</button>
-            </div>
-
+            <label for="inputType" class="col-md-2 control-label pull-left">Application:</label>
+            <select class="col-md-2 form-control" prefix="selectedApplication" value.bind="selectedApplication">
+                <option repeat.for="application of applications">${application.ApplicationName}</option>
+            </select>
             <label class="col-md-2 control-label">Contract: </label>
-            <div class="col-md-3">
-                <select value.bind="selectedContract" class="form-control">
-                    <option>Select ...</option>
-                    <option repeat.for="contract of contracts">${contract.ContractName}</option>
-                </select>
-                <button click.trigger="selectCOntract()">Select Contracts</button>
+            <select class="col-md-2 form-control" value.bind="selectedContract">
+                <option>Select ...</option>
+                <option repeat.for="contract of contracts">${contract.ContractName}</option>
+            </select>
+            <div  class="col-md-4">
+                <button class="form-control btn btn-primary" click.trigger="selectContract()">Select Contract</button>
             </div>
+            
+
         </div>
 
 
