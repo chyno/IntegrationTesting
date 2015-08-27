@@ -7,15 +7,17 @@ let baseAppUrl = "../api/Application";
 //let baseCOntractsUrl = "http://localhost/IntegrationTesting2/api/Contracts/2";
 let baseContractsUrl = "../api/Contracts/";
 
+let currentApp = null;
 
 @inject(HttpClient)
 export class TestData {
 
-    
+    CurrrentApplication = null;
+
     constructor(httpClient) {
         this.http = httpClient;
-        this.CurrrentApplication = "RS";
-        this.CurrrentContract = "Find Beneficiary";
+        this.CurrrentApplication = null;
+        this.CurrrentContract = null;
     }
 
     getById(id) {
@@ -30,7 +32,6 @@ export class TestData {
 
     save(test) {
          
-
     }
 
     getApplications()
@@ -53,6 +54,20 @@ export class TestData {
                       */
     }
 
+    getCurrrentApplication() {
+        if (!currentApp) {
+            return this.getApplications().then(apps => {
+                currentApp = apps[0];
+                return currentApp;
+            });
+        }
+        
+        new Promise(function(resolve, reject) { 
+            resolve(currentApp);
+        });
+       
+    }
+    
     getContracts(appId)
     {
         var rsContrantracts =  [{ ContractName : "Find Ben RS", ContractId : 1 },  { ContractName : "Add Ben Gems", ContractId : 2 }];

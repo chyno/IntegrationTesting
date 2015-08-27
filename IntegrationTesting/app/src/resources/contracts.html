@@ -2,9 +2,9 @@
     <form class="form-horizontal" role="form">
         <div class="form-group">
             <label for="inputType" class="col-md-2 control-label pull-left">Application:</label>
-            <select class="col-md-2 form-control" prefix="selectedApplication" value.bind="selectedApplication">
-                <option repeat.for="application of applications">${application.ApplicationName}</option>
-            </select>
+            <div>${ApplicationName}</div>
+
+
             <label class="col-md-2 control-label">Contract: </label>
             <select class="col-md-2 form-control" value.bind="selectedContract">
                 <option>Select ...</option>
