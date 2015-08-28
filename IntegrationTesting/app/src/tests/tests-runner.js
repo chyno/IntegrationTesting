@@ -5,7 +5,11 @@ inject(TestData)
 export class TestsRunner
 {
     
-    constructor(testData) {        
+    
+    constructor(testData) {
+        this.contractId = -1;
+        this.appId = -1;
+        this.data = testData;
         this.ShowTests = false;
         this.TestToRun = "*";
 
@@ -26,10 +30,25 @@ export class TestsRunner
 
     activate()
     {
-        this.ShowTests = false;
-        this.TestToRun = "*";
+        if (this.data.CurrentContract) {
+            if (this.contractId != this.data.CurrentContract.Id && this.appId != this.data.CurrentApplication.Id) {
+                this.ShowTests = false;
+                this.TestToRun = "*";    
+
+            }
+        } else {
+            this.ShowTests = false;
+            this.TestToRun = "*";    
+        }
+        
     }
 
+    deactivate() {
+        if (this.contractId > 0) {
+            this.contractId = this.data.CurrentContract.Id;
+            this.appId = this.data.CurrentApplication.Id;
+        }
+    }
     showTests()
     {
         this.ShowTests = true;
