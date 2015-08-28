@@ -17,8 +17,9 @@ export class App {
     }
 
     configureRouter(config, router) {
-        this.config = config;
-        this.router = router;
+        var self = this;
+        self.config = config;
+        self.router = router;
         
 
         config.map([
@@ -27,9 +28,10 @@ export class App {
             { route: 'tests-documentation', name: 'tests-documentation', moduleId: 'tests/tests-documentation', nav: true, title: 'Documentation' },
             { route: 'tests-admin', name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title: 'Admin', showContracts: (show) => { this.showContracts = show }, setAppTitle:  (appName) => { this.router.title = appName + " - " + appTitle;} }
         ]);
+
        
         this.data.getCurrrentApplication().then(app => {
-            this.config.title =  app.ApplicationName + " - " + appTitle;
+            self.router.title =  app.ApplicationName + " - " + appTitle;
             
         });
        

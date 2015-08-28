@@ -11,9 +11,8 @@ let baseContractsUrl = "../api/Contracts/";
 
 @inject(HttpClient)
 export class TestData {
-
-    CurrrentApplication = null;
-
+    CurrrentApplication;
+    
     constructor(httpClient) {
         this.http = httpClient;
         this.CurrrentApplication = null;
@@ -30,9 +29,7 @@ export class TestData {
         
     }
 
-    save(test) {
-         
-    }
+    
 
     getApplications()
     {
@@ -49,19 +46,17 @@ export class TestData {
     }
 
     getCurrrentApplication() {
-      
+        var self = this;
+        
         if (!this.CurrrentApplication) {
-             var apppsPromise = this.getApplications();
-            apppsPromise.then(apps => {
-                this.CurrrentApplication = apps[0];
-                return this.CurrrentApplication;
-            });
-            return apppsPromise;
+            return this.getApplications().then( (apps) => {
+                self.CurrrentApplication = apps[0];
+                return self.CurrrentApplication;
+            }, () => { console.log("fail to get applicaiton")});     
         }
         
-
        return  new Promise(function(resolve, reject) { 
-           resolve(this.CurrrentApplication);
+           resolve(self.CurrrentApplication);
         });
        
     }
