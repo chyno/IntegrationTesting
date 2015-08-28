@@ -12,7 +12,7 @@ export class TestsAdmin{
     }
 
     changeApplication() {
-        var app = this.applications.filter((app) => { return app.ApplicationName === this.selectedApplication });
+        var app = this.applications.filter((app) => { return app.ApplicationName === this.selectedApplication })[0];
         this.data.CurrrentApplication = app;
         this.setAppTitle(this.selectedApplication);
     }
@@ -27,7 +27,13 @@ export class TestsAdmin{
         this.data.getApplications().then(apps => 
         {  console.log("*** In activate");
             this.applications = apps;
-            var curapp = this.applications[1];
+            var curapp;
+            if (this.data.CurrrentApplication) {
+                curapp = this.data.CurrrentApplication;
+            } else {
+                curapp = this.applications[0];    
+            }
+            
             this.selectedApplication = curapp.ApplicationName;
         }); 
     }

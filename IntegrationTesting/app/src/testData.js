@@ -7,7 +7,7 @@ let baseAppUrl = "../api/Application";
 //let baseCOntractsUrl = "http://localhost/IntegrationTesting2/api/Contracts/2";
 let baseContractsUrl = "../api/Contracts/";
 
-let currentApp = null;
+
 
 @inject(HttpClient)
 export class TestData {
@@ -49,15 +49,19 @@ export class TestData {
     }
 
     getCurrrentApplication() {
-        if (!currentApp) {
-            return this.getApplications().then(apps => {
-                currentApp = apps[0];
-                return currentApp;
+      
+        if (!this.CurrrentApplication) {
+             var apppsPromise = this.getApplications();
+            apppsPromise.then(apps => {
+                this.CurrrentApplication = apps[0];
+                return this.CurrrentApplication;
             });
+            return apppsPromise;
         }
         
-        new Promise(function(resolve, reject) { 
-            resolve(currentApp);
+
+       return  new Promise(function(resolve, reject) { 
+           resolve(this.CurrrentApplication);
         });
        
     }
