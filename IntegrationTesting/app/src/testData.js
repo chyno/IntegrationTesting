@@ -11,12 +11,15 @@ let baseContractsUrl = "../api/Contracts/";
 
 @inject(HttpClient)
 export class TestData {
-    CurrrentApplication;
-    
+
+    CurrentApplication;
+    CurrentContract;
+
     constructor(httpClient) {
         this.http = httpClient;
-        this.CurrrentApplication = null;
-        this.CurrrentContract = null;
+        this.CurrentApplication = null;
+        this.CurrentContract = null;
+        
     }
 
     getById(id) {
@@ -45,18 +48,18 @@ export class TestData {
         
     }
 
-    getCurrrentApplication() {
+    getCurrentApplication() {
         var self = this;
         
-        if (!this.CurrrentApplication) {
+        if (!this.CurrentApplication) {
             return this.getApplications().then( (apps) => {
-                self.CurrrentApplication = apps[0];
-                return self.CurrrentApplication;
+                self.CurrentApplication = apps[0];
+                return self.CurrentApplication;
             }, () => { console.log("fail to get applicaiton")});     
         }
         
        return  new Promise(function(resolve, reject) { 
-           resolve(self.CurrrentApplication);
+           resolve(self.CurrentApplication);
         });
        
     }

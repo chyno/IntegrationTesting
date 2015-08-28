@@ -10,40 +10,49 @@ export class TestsAdmin{
         this.applications = null;
         this.data = testData;  
         this.selectedContract = null ;
+        this.data.getApplications().then(apps => 
+        {  
+            this.applications = apps;
+                        
+            
+
+        }); 
     }
 
     changeApplication() {
+        
         var app = this.applications.filter((app) => { return app.ApplicationName === this.selectedApplication })[0];
-        this.data.CurrrentApplication = app;
+        this.data.CurrentApplication = app;
         this.displayContracts(app.Id);
     }
     
     activate(params, routeconfig) {
         this.setAppTitle = routeconfig.setAppTitle;
-        this.data.getApplications().then(apps => 
-        {  console.log("*** In activate");
-            this.applications = apps;
-            var curapp;
-            if (this.data.CurrrentApplication) {
-                curapp = this.data.CurrrentApplication;
-            } else {
-                curapp = this.applications[0];    
+        if (this.data.CurrentApplication) {
+            this.selectedApplication = this.data.CurrentApplication.ApplicationName;
+            this.displayContracts(this.data.CurrentApplication.Id);
+            if (this.data.CurrentContract) {
+                this.selectedContract = this.data.CurrentContract.ContractName;
+                                                   
             }
-            
-            this.selectedApplication = curapp.ApplicationName;
+        }  
+  
+    }
 
-            this.displayContracts(curapp.Id);
+    displayContracts(appId) {
+
+        this.data.getContracts(appId).then(contracts => {
+            this.contracts = contracts;
 
         }); 
     }
 
-    displayContracts(appId) {
-        this.data.getContracts(appId).then(contracts => {this.contracts = contracts; }); 
-    }
-
     selectContract() {
+        var contract =  this.contracts.filter((contract) => { return contract.ContractName === this.selectedContract })[0];
+        this.data.CurrentContract = contract;
         this.setAppTitle(this.selectedApplication, this.selectedContract);
     }
+
     deactivate() {
         
     }
