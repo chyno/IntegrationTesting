@@ -11,12 +11,14 @@ namespace IntegrationTesting.Controllers
 
 
         // GET api/<controller>/5
-        public List<TestItem> Get(int id, string tests)
+        public List<TestItem> Get(int id, int cId, string testNumber)
         {
 
-            List<TestItem> result = DbUtility.GetTestItems(id, tests);
+            //  List<TestItem> result = DbUtility.GetTestItems(id, testNumber);
+            List<TestItem> result = DbUtility.GetTestItems(id,cId, testNumber);
             return result;
         }
+ 
 
 
     }

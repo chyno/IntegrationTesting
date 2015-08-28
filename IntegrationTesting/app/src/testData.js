@@ -7,7 +7,8 @@ let baseAppUrl = "../api/Application";
 //let baseCOntractsUrl = "http://localhost/IntegrationTesting2/api/Contracts/2";
 let baseContractsUrl = "../api/Contracts/";
 
-
+//api/TestsToRun/1?cId=12&testNumber=4-10
+let baseTests = "api/TestsToRun/";
 
 @inject(HttpClient)
 export class TestData {
@@ -24,13 +25,19 @@ export class TestData {
         
     }
 
-    getById(id) {
-        return {id: id, TestName: "test 1"};
+    
 
-    }
+    getContractTests(testNumber) {
+        ////api/TestsToRun/1?cId=12&testNumber=4-10
+        var url = baseTests + this.CurrentApplication.Id + "?cId=" + this.CurrentContract.ContractId + "&testNumber=" + testNumber;
+        console.log(url);
+        return this.http
+            .get(url)
+                        .then(response => {
+                            return response.content;
+                        });
 
-    getAll() {
-        return [{id: 1, TestName: "test 1"}, {id: 2, TestName: "test 2"}, {id: 3, TestName: "test 3"}];
+        
         
     }
 
@@ -40,16 +47,16 @@ export class TestData {
 
     getApplications()
     {
-        console.log("******** getting appications *****");
-        var tstObj = [{ Id : 1, ApplicationName : "RS" }, { Id : 2, ApplicationName : "BW" }];
-
-        var p1 = new Promise(function(resolve, reject) { 
-            resolve(tstObj);
-        });
-        //return [{ Id = 1, ApplicationName = "RS" }, { Id = 2, ApplicationName = "BW" }];
-        return p1;
+        console.log("******** getting contracts *****");
+        var url = baseAppUrl;
+        console.log(url);
+        return this.http
+            .get(url)
+                        .then(response => {
+                            return response.content;
+                        });
        
-        
+       
     }
 
     setCurrentState() {
@@ -68,21 +75,14 @@ export class TestData {
     
     getContracts(appId)
     {
-        var rsContrantracts =  [{ ContractName : "Find Ben RS", ContractId : 1 },  { ContractName : "Add Ben Gems", ContractId : 2 }];
-        var bwContrantracts =  [{ ContractName : "Find Ben BW", ContractId : 1 },  { ContractName : "Add Ben GBW", ContractId : 2 }];
-
-        var p1 = new Promise(function(resolve, reject) { 
-            if (appId === 1)
-            {
-                resolve(rsContrantracts);
-            }
-            else
-            {
-                resolve(bwContrantracts);
-            }
-            
-        });
-        return p1;
+        console.log("******** getting contracts *****");
+        var url = baseContractsUrl + appId;
+        console.log(url);
+        return this.http
+            .get(url)
+                        .then(response => {
+                            return response.content;
+                        });
 
         
     }

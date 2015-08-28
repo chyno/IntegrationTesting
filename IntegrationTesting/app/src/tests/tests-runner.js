@@ -4,8 +4,6 @@ import {TestData} from "../testData";
 @inject(TestData)
 export class TestsRunner
 {
-    
-    
     constructor(testData) {
       
         this.data = testData;
@@ -53,8 +51,11 @@ export class TestsRunner
     deactivate() {
         this.data.setCurrentState();
     }
-    showTests()
-    {
+    showTests() {
+        this.data.getContractTests(this.TestToRun).then(tests => {
+            this.Tests = tests;
+        });
+
         this.ShowTests = true;
        
     }

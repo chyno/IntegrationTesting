@@ -22,17 +22,55 @@ namespace IntegrationTesting.Database
          * */
 
         private const string SelectAllTestCommand = @"SELECT t.[TestRequestFileId], t.[TestFileDescription], t.[InputJson] , t.[TestNumber], t.[ContractId], t.[OutputJson] from (SELECT [TestRequestFileId] ,[OutputJson], [TestFileDescription], [InputJson] ,[TestNumber],[ContractId], CAST([TestNumber] AS int) as TestNumberValue FROM [RSP_AAT_TestFiles].[dbo].[tblTestRequestFile] where  (ContractId =  @ContractId)) t order by t.TestNumberValue";
+        private const string SelectAllTestByAppCommand = @"SELECT t.[TestRequestFileId],  t.[TestFileDescription],  t.[InputJson] , t.[TestNumber], t.[ContractId],  t.[OutputJson] from ( SELECT tblTestRequestFile.TestRequestFileId, tblTestRequestFile.OutputJson, tblTestRequestFile.TestFileDescription, tblTestRequestFile.InputJson, tblTestRequestFile.TestNumber,  tblTestRequestFile.ContractID, CAST(tblTestRequestFile.TestNumber AS int) AS TestNumberValue, Contract.[FK_ApplicationId] FROM     tblTestRequestFile INNER JOIN Contract ON tblTestRequestFile.ContractID = Contract.ContractId WHERE  (tblTestRequestFile.ContractID = @ContractId and Contract.[FK_ApplicationId] = @ApplicationId))  t order by t.TestNumberValue";
+
         //private const string SelectAllTestCommand = @"SELECT t.[TestFileDescription], t.[InputJson] , t.[TestNumber], t.[ContractId], t.[OutputJson] from (SELECT [TestFileDescription], [InputJson] ,[TestNumber],[ContractId], CAST([TestNumber] AS int) as TestNumberValue FROM [RSP_AAT_TestFiles].[dbo].[TestRequestFile] where  (ContractId =  @ContractId)) t order by t.TestNumberValue";
 
 
         private const string SelectOneTestCommand = @"SELECT TestRequestFileId, [TestFileDescription], [InputJson] ,[TestNumber],[ContractId], [OutputJson] FROM [RSP_AAT_TestFiles].[dbo].[TestRequestFile] where  (ContractId = @ContractId) and (TestNumber = @TestNumber)";
-        private const string SelectDistinctContracts = @"SELECT [ContractId],[ContractName] FROM [RSP_AAT_TestFiles].[dbo].[Contract]";
+        private const string SelectDistinctContracts = @"SELECT [ContractId],[ContractName] FROM [RSP_AAT_TestFiles].[dbo].[Contract] where [FK_ApplicationId] = @ApplicationId";
         private const string SelectContractById = @"SELECT [ContractName] FROM [RSP_AAT_TestFiles].[dbo].[Contract] where [ContractId] = @ContractId";
         private const string SelectUrlByContractName = @"SELECT [EndPointUrl] FROM [RSP_AAT_TestFiles].[dbo].[Contract] where [ContractName] = @ContractName";
         private const string UpdateInputJason = @"UPDATE [dbo].[tblTestRequestFile] SET [InputJson] = @InputJson WHERE [TestNumber] = @TestNumber and [ContractID] = @ContractID";
         private const string DeleteTtestStr = @"Delete [dbo].[tblTestRequestFile]  WHERE [TestRequestFileId] = @TestRequestFileId";
         private const string AddTestStr = @"INSERT INTO [dbo].[tblTestRequestFile] ([TestFileDescription] ,[InputJson],[TestNumber] ,[ContractID] ,[OutputJson]) VALUES (@TestFileDescription,@InputJson,@TestNumber, @ContractID, @OutputJson)";
         private const string UpdateTestStr = @"UPDATE [dbo].[tblTestRequestFile] SET  [TestFileDescription] = @TestFileDescription ,[InputJson] = @InputJson ,[TestNumber] = @TestNumber ,[OutputJson] = @OutputJson ,[ContractID] = @ContractID WHERE  TestRequestFileId = @TestRequestFileId";
+
+
+
+        public static List<TestItem> GetTestItems(int appId, int contractId, string testNumber)
+        {
+            List<TestItem> result = null;
+            string connectionString = GetConnectionString();
+
+            var param = new { ContractId = contractId, ApplicationId = appId };
+            using (var connection = new SqlConnection(connectionString))
+            {
+                result = connection.Query<TestItem>(SelectAllTestByAppCommand, param).ToList();
+            }
+            var tstNumber = testNumber.Trim();
+
+            if (tstNumber.Equals("*"))
+            {
+                return result;
+            }
+            else
+            {
+                var items = tstNumber.Split('-');
+                if (items.Count() == 2)
+                {
+                    int lowerBound = Int32.Parse(items[0]);
+                    int upperBound = Int32.Parse(items[1]);
+
+                    return result.Where(t => t.TestNumberVal >= lowerBound && t.TestNumberVal <= upperBound).ToList();
+                }
+                else
+                {
+                    return result.Where(t => t.TestNumber.Trim().Equals(testNumber.Trim())).ToList();
+                }
+
+            }
+        }
 
         public static List<TestItem> GetTestItems(int contractId, string testNumber)
         {
@@ -84,15 +122,16 @@ namespace IntegrationTesting.Database
             return result;
         }
 
-        public static List<TestContract> GetDistinctContracts()
+        public static List<TestContract> GetDistinctContracts(int appId)
         {
             List<TestContract> result = null;
             string connectionString = GetConnectionString();
-  
-          
+
+            var param = new {ApplicationId = appId };
+
             using (var connection = new SqlConnection(connectionString))
             {
-                result = connection.Query<TestContract>(SelectDistinctContracts).ToList();
+                result = connection.Query<TestContract>(SelectDistinctContracts, param).ToList();
             }
             return result;
         }
@@ -244,5 +283,6 @@ namespace IntegrationTesting.Database
             }
             return result;
         }
+
     }
 }
