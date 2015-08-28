@@ -22,9 +22,6 @@ export class Contracts
     } 
 
     activate() {
-        testData.getCurrentApplication().then(app => {
-            
-            this.data.getContracts(app.Id).then(contracts => {this.contracts = contracts; });    
-        });
+        
     }
 }     

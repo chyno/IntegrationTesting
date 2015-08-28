@@ -1,5 +1,5 @@
 ﻿<template>
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" show.bind="ShowSelector">
         <div class="form-group">
             <label class="col-md-2 control-label pull-left TestingControlNormal">Test Number: </label>
             <input type="text" value.bind="TestToRun" class="col-md-2 form-control pull-left" />
@@ -12,15 +12,15 @@
     </form>
 
 
-    <div class="form-horizontal" role="form">
+    <div class="form-horizontal" role="form" show.bind="ShowTests">
 
-        <div show.bind="ShowTests">
+        
             <!-- <div class="form-horizontal" data-bind="template: { name: 'tests-template', foreach: TestItems }"></div> -->
             <template repeat.for="test of Tests">
                 <compose model.bind="test" view-model="./test">
                 </compose>
             </template>
-        </div>
+         
     </div>
 
 </template> 

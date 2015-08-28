@@ -19,6 +19,8 @@ export class TestData {
         this.http = httpClient;
         this.CurrentApplication = null;
         this.CurrentContract = null;
+        this.oldContractId = -1;
+        this.oldAppId = -1;
         
     }
 
@@ -32,7 +34,9 @@ export class TestData {
         
     }
 
-    
+    needsRefresh() {
+        return  this.oldContractId != this.CurrentContract.ContractId || this.oldAppId != this.CurrentApplication.Id;
+    }
 
     getApplications()
     {
@@ -48,20 +52,18 @@ export class TestData {
         
     }
 
-    getCurrentApplication() {
-        var self = this;
-        
-        if (!this.CurrentApplication) {
-            return this.getApplications().then( (apps) => {
-                self.CurrentApplication = apps[0];
-                return self.CurrentApplication;
-            }, () => { console.log("fail to get applicaiton")});     
+    setCurrentState() {
+        if (this.CurrentContract) {
+            this.oldContractId = this.CurrentContract.ContractId;
+            this.oldAppId = this.CurrentApplication.Id;
         }
+    }
+    setCurrentContract(contractName, contracts) {
+
+        var newcontract =  contracts.filter((contract) => { return contract.ContractName === contractName })[0];
+        this.CurrentContract = newcontract;
+
         
-       return  new Promise(function(resolve, reject) { 
-           resolve(self.CurrentApplication);
-        });
-       
     }
     
     getContracts(appId)

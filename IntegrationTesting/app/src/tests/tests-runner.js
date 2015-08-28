@@ -7,10 +7,10 @@ export class TestsRunner
     
     
     constructor(testData) {
-        this.contractId = -1;
-        this.appId = -1;
+      
         this.data = testData;
         this.ShowTests = false;
+        this.ShowSelector = false;
         this.TestToRun = "*";
 
         this.Tests = [
@@ -31,12 +31,19 @@ export class TestsRunner
     activate()
     {
         if (this.data.CurrentContract) {
-            if (this.contractId != this.data.CurrentContract.Id && this.appId != this.data.CurrentApplication.Id) {
+            
+            if (this.data.needsRefresh()) {
+                this.ShowSelector = true;
                 this.ShowTests = false;
                 this.TestToRun = "*";    
 
+            } else {
+                this.ShowSelector = true;
+                this.ShowTests = true;
+                this.TestToRun = "*";   
             }
         } else {
+            this.ShowSelector = false;
             this.ShowTests = false;
             this.TestToRun = "*";    
         }
@@ -44,10 +51,7 @@ export class TestsRunner
     }
 
     deactivate() {
-        if (this.contractId > 0) {
-            this.contractId = this.data.CurrentContract.Id;
-            this.appId = this.data.CurrentApplication.Id;
-        }
+        this.data.setCurrentState();
     }
     showTests()
     {

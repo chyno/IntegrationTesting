@@ -48,8 +48,7 @@ export class TestsAdmin{
     }
 
     selectContract() {
-        var contract =  this.contracts.filter((contract) => { return contract.ContractName === this.selectedContract })[0];
-        this.data.CurrentContract = contract;
+        this.data.setCurrentContract(this.selectedContract, this.contracts);
         this.setAppTitle(this.selectedApplication, this.selectedContract);
     }
 
