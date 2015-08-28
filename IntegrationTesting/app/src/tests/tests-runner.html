@@ -1,14 +1,18 @@
 ﻿<template>
-    
-    <div class="form-horizontal" role="form">
-
+    <form class="form-horizontal" role="form">
         <div class="form-group">
+            <label class="col-md-2 control-label pull-left TestingControlNormal">Test Number: </label>
+            <input type="text" value.bind="TestToRun" class="col-md-2 form-control pull-left" />
 
-            <label class="rs-label rs-nextcontrol">Test Number: </label>
-            <input type="text" value.bind="TestToRun" class="form-control" />
-            <button click.trigger="showTests()" class="btn btn-primary rs-nextcontrol">Show Tests</button>
+            <div class="col-md-4 pull-left">
+                <button click.trigger="showTests()" class="form-control btn btn-primary TestingControlNormal">Show Tests</button>
+
+            </div>
         </div>
+    </form>
 
+
+    <div class="form-horizontal" role="form">
 
         <div show.bind="ShowTests">
             <!-- <div class="form-horizontal" data-bind="template: { name: 'tests-template', foreach: TestItems }"></div> -->
