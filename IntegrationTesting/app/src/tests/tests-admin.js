@@ -6,24 +6,20 @@ import {TestData} from "../testData";
 export class TestsAdmin{
 
     constructor(testData) {
-         
+        this.contracts = null;
         this.applications = null;
-        this.data = testData;        
+        this.data = testData;  
+        this.selectedContract = null ;
     }
 
     changeApplication() {
         var app = this.applications.filter((app) => { return app.ApplicationName === this.selectedApplication })[0];
         this.data.CurrrentApplication = app;
-        this.setAppTitle(this.selectedApplication);
+        this.displayContracts(app.Id);
     }
     
-     
-
     activate(params, routeconfig) {
-        this.showContracts = routeconfig.showContracts;
         this.setAppTitle = routeconfig.setAppTitle;
-
-        this.showContracts(false);
         this.data.getApplications().then(apps => 
         {  console.log("*** In activate");
             this.applications = apps;
@@ -35,10 +31,20 @@ export class TestsAdmin{
             }
             
             this.selectedApplication = curapp.ApplicationName;
+
+            this.displayContracts(curapp.Id);
+
         }); 
     }
 
+    displayContracts(appId) {
+        this.data.getContracts(appId).then(contracts => {this.contracts = contracts; }); 
+    }
+
+    selectContract() {
+        this.setAppTitle(this.selectedApplication, this.selectedContract);
+    }
     deactivate() {
-        this.showContracts(true);
+        
     }
 }

@@ -26,14 +26,11 @@ export class App {
             { route: ['', 'tests-runner'], name: 'tests-runner', moduleId: 'tests/tests-runner', nav: true, title: 'Run Test' },
             { route: 'tests-manage', name: 'tests-manage', moduleId: 'tests/tests-manage', nav: true, title: 'Add Edit Tests' },
             { route: 'tests-documentation', name: 'tests-documentation', moduleId: 'tests/tests-documentation', nav: true, title: 'Documentation' },
-            { route: 'tests-admin', name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title: 'Admin', showContracts: (show) => { this.showContracts = show }, setAppTitle:  (appName) => { this.router.title = appName + " - " + appTitle;} }
+            { route: 'tests-admin', name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title: 'Admin', showContracts: (show) => { this.showContracts = show }, setAppTitle:  (appName, cntractName) => { this.router.title = appName + " - " + cntractName;} }
         ]);
 
-       
-        this.data.getCurrrentApplication().then(app => {
-            self.router .title =  app.ApplicationName + " - " + appTitle;
-            
-        });
+        self.router .title =  "No Contract?";
+        
        
     }
     
