@@ -1,7 +1,7 @@
 ﻿import {inject} from "aurelia-framework";
 import {TestData} from "../testData";
 
-inject(TestData)
+@inject(TestData)
 export class TestsRunner
 {
     
