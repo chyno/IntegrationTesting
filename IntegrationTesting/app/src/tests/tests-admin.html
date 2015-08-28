@@ -1,12 +1,14 @@
 ﻿<template>
-    <p>Change Application</p>
+     
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputType" class="col-md-2 control-label pull-left">Application:</label>
-            <select class="col-md-2 form-control" prefix="selectedApplication" value.bind="selectedApplication">
+            <label for="inputType" class="col-md-1 control-label pull-left">Application:</label>
+            <select class="col-md-2 form-control pull-left" prefix="selectedApplication" value.bind="selectedApplication">
                 <option repeat.for="application of applications">${application.ApplicationName}</option>
             </select>
+            <button click.trigger="changeApplication()" class="btn btn-primary col-md-2 form-control pull-left" style="max-width: 164px;">Set Application</button>
         </div>
+
     </form>
-    <button click.trigger="changeApplication()">Set Application</button>
+   
 </template>

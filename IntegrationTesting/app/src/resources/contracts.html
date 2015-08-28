@@ -2,13 +2,13 @@
     <form class="form-horizontal" role="form">
         <div class="form-group">
             
-            <label class="col-md-2 control-label">Contract: </label>
-            <select class="col-md-2 form-control" value.bind="selectedContract">
+            <label class="col-md-2 control-label pull-left TestingControlNormal">Contract: </label>
+            <select class="col-md-2 form-control pull-left" value.bind="selectedContract">
                 <option>Select ...</option>
                 <option repeat.for="contract of contracts">${contract.ContractName}</option>
             </select>
-            <div  class="col-md-4">
-                <button class="form-control btn btn-primary" click.trigger="selectContract()">Select Contract</button>
+            <div  class="col-md-4 pull-left">
+                <button class="form-control btn btn-primary TestingControlNormal" click.trigger="selectContract()">Select Contract</button>
             </div>
             
 

@@ -126,7 +126,9 @@ div.au-stagger {
   border: 2px #FFF solid;
 }
 
-
+.TestingControlNormal    {
+    max-width: 160px;
+}
 /* animation definitions */
 @-webkit-keyframes fadeInRight {
   0% {

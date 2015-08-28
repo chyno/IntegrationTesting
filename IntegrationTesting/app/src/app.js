@@ -31,7 +31,7 @@ export class App {
 
        
         this.data.getCurrrentApplication().then(app => {
-            self.router.title =  app.ApplicationName + " - " + appTitle;
+            self.router .title =  app.ApplicationName + " - " + appTitle;
             
         });
        
