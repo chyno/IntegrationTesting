@@ -5,7 +5,7 @@ inject(TestData)
 export class TestsRunner
 {
     
-    constructor() {        
+    constructor(testData) {        
         this.ShowTests = false;
         this.TestToRun = "*";
 

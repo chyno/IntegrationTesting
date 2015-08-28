@@ -45,13 +45,7 @@ export class TestData {
         //return [{ Id = 1, ApplicationName = "RS" }, { Id = 2, ApplicationName = "BW" }];
         return p1;
        
-        /*
-        return this.http
-            .get(baseAppUrl)
-                      .then(response => {
-                          return response.content;
-                      });
-                      */
+        
     }
 
     getCurrrentApplication() {
@@ -86,13 +80,6 @@ export class TestData {
         });
         return p1;
 
-        console.log("******** getting contracts *****");
-      //  var url = baseContractsUrl + appId;
-       // console.log(url);
-       // return this.http
-        //    .get(url)
-        //                .then(response => {
-         //                   return response.content;
-          //              });
+        
     }
 }
