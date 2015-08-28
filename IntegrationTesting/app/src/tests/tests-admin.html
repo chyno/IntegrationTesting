@@ -4,7 +4,7 @@
         <div class="form-group row">
             <label for="inputType" class="col-md-2 control-label pull-left TestingControlNormal">Application:</label>
             <select class="col-md-2 form-control pull-left TestingControlNormal" prefix="selectedApplication" value.bind="selectedApplication">
-                <option repeat.for="application of applications">${application.ApplicationName}</option>
+                <option repeat.for="application of applications">${application.ApplicationName} changed.bind="changeApplication()"</option>
             </select>
             <div class="col-md-4 pull-left">
                 <button click.trigger="changeApplication()" class="btn btn-primary  form-control TestingControlNormal" style="max-width: 164px;">Set Application</button>
