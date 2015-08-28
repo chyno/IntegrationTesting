@@ -8,7 +8,7 @@ let baseAppUrl = "../api/Application";
 let baseContractsUrl = "../api/Contracts/";
 
 //api/TestsToRun/1?cId=12&testNumber=4-10
-let baseTests = "api/TestsToRun/";
+let baseTests = "../api/TestsToRun/";
 
 @inject(HttpClient)
 export class TestData {

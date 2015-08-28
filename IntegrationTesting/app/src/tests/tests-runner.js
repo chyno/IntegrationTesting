@@ -10,19 +10,8 @@ export class TestsRunner
         this.ShowTests = false;
         this.ShowSelector = false;
         this.TestToRun = "*";
+        this.Tests = [];
 
-        this.Tests = [
-         {
-             TestRequestFileId: 1,
-             InputJson : "{foo : 'b'}",
-             TestNumber : "1", 
-             TestFileDescription: 'test file description for test 1', 
-             TestName: "test 1",
-             EditInputJson : "{foo : 'b'}",
-             ActualOutput : "n/a",
-             OutputJson : "{foo:'success'}"
-         }
-        ];     
 
     }
 
@@ -52,6 +41,7 @@ export class TestsRunner
         this.data.setCurrentState();
     }
     showTests() {
+
         this.data.getContractTests(this.TestToRun).then(tests => {
             this.Tests = tests;
         });
