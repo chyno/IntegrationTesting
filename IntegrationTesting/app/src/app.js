@@ -7,7 +7,7 @@ let appTitle = "Contract Testing";
 
 @inject(TestData)
 export class App {
-
+    self = this;
     constructor(testData) {
         this.data = testData;
     }
@@ -17,7 +17,7 @@ export class App {
     }
 
     configureRouter(config, router) {
-        var self = this;
+      
         self.config = config;
         self.router = router;
         
@@ -26,18 +26,18 @@ export class App {
             { route: ['', 'tests-runner'], name: 'tests-runner', moduleId: 'tests/tests-runner', nav: true, title: 'Run Test' },
             { route: 'tests-manage', name: 'tests-manage', moduleId: 'tests/tests-manage', nav: true, title: 'Add Edit Tests' },
             { route: 'tests-documentation', name: 'tests-documentation', moduleId: 'tests/tests-documentation', nav: true, title: 'Documentation' },
-            { route: 'tests-admin', name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title: 'Admin', showContracts: (show) => { this.showContracts = show }, setAppTitle:  (appName, cntractName) => { this.router.title = appName + " - " + cntractName;} }
+            { route: 'tests-admin', name: 'tests-admin', moduleId: 'tests/tests-admin', nav: true, title: 'Admin', setAppTitle:  setAppTitle}
         ]);
 
-        self.router .title =  "No Contract?";
-        
-       
+        self.data.CurrentApplication = self.data.Applications[0];
+        self.setAppTitle("?");
+          
     }
-    
-    
-    showContracts = true;
 
-    
+  
+    setAppTitle(cntractName) {
+        self.router.title = self.data.CurrentApplication.ApplicationName + " - " + cntractName;
+    } 
 }
 
 

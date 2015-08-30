@@ -10,13 +10,8 @@ export class TestsAdmin{
         this.applications = null;
         this.data = testData;  
         this.selectedContract = null ;
-        this.data.getApplications().then(apps => 
-        {  
-            this.applications = apps;
-                        
-            
+        this.applications = this.data.Applications;
 
-        }); 
     }
 
     changeApplication() {
