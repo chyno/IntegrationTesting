@@ -15,7 +15,7 @@ namespace IntegrationTesting.Controllers
         {
 
             //  List<TestItem> result = DbUtility.GetTestItems(id, testNumber);
-            List<TestItem> result = DbUtility.GetTestItems(id,cId, testNumber);
+           List<TestItem> result = DbUtility.GetTestItems(id,cId, testNumber);
             return result;
         }
  

@@ -1,41 +1,29 @@
-import {App} from '../../src/app';
+import {TestData} from "../../src/testData";
 
-class RouterStub {
-  configure(handler) {
-    handler(this);
-  }
-  map(routes) {
-    this.routes = routes;
-  }
-}
+describe('the test data  module', () => {
+    
+    class HttpStub {
+        fetch(url) {
+            var response = this.itemStub;
+            this.url = url;
+            return new Promise((resolve) => {
+                resolve({ json: () => response });
+            })
+        }
+        configure(func){
+        }
+    }
 
-describe('the App module', () => {
-  var sut
-    , mockedRouter;
 
-  beforeEach(() => {
-    mockedRouter = new RouterStub();
-    sut = new App(mockedRouter);
-    sut.configureRouter(mockedRouter, mockedRouter);
-  });
+    it('fails', () => {
+        expect(1).toEqual(1);
+    });
 
-  it('contains a router property', () => {
-    expect(sut.router).toBeDefined();
-  });
+    it('is not null', () => {
 
-  it('configures the router title', () => {
-    expect(sut.router.title).toEqual('Aurelia');
-  });
+        var http = new HttpStub(),
+           tst = new TestData(http);
 
-  it('should have a welcome route', () => {
-    expect(sut.router.routes).toContain({ route: ['','welcome'], name: 'welcome',  moduleId: 'welcome', nav: true, title:'Welcome' });
-  });
-
-  it('should have a users route', () => {
-     expect(sut.router.routes).toContain({ route: 'users', name: 'users', moduleId: 'users', nav: true, title:'Github Users' });
-  });
-
-  it('should have a child router route', () => {
-    expect(sut.router.routes).toContain({ route: 'child-router', name: 'child-router', moduleId: 'child-router', nav: true, title:'Child Router' });
-  });
+        expect(tst).toBeDefined();
+    })
 });

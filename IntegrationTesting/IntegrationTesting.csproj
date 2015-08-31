@@ -228,8 +228,6 @@
     <Content Include="app\src\app.html" />
     <Content Include="app\src\app.js" />
     <Content Include="app\src\blur-image.js" />
-    <Content Include="app\src\child-router.html" />
-    <Content Include="app\src\child-router.js" />
     <Content Include="app\src\resources\contracts.html" />
     <Content Include="app\src\resources\contracts.js" />
     <Content Include="app\src\main.js" />
@@ -257,6 +255,7 @@
     <Content Include="app\test\e2e\src\welcome.po.js" />
     <Content Include="app\test\unit\app.spec.js" />
     <Content Include="app\test\unit\child-router.spec.js" />
+    <Content Include="app\test\unit\contracts-spec.js" />
     <Content Include="app\test\unit\users.spec.js" />
     <Content Include="app\styles\bootstrap.css" />
     <Content Include="app\styles\bootstrap.min.css" />
