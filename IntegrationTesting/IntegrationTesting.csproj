@@ -253,7 +253,6 @@
     <Content Include="app\test\e2e\src\demo.spec.js" />
     <Content Include="app\test\e2e\src\skeleton.po.js" />
     <Content Include="app\test\e2e\src\welcome.po.js" />
-    <Content Include="app\test\unit\app.spec.js" />
     <Content Include="app\test\unit\child-router.spec.js" />
     <Content Include="app\test\unit\contracts-spec.js" />
     <Content Include="app\test\unit\users.spec.js" />

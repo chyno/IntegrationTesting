@@ -1,7 +1,29 @@
-﻿
-describe('the test data  module', () => {
+﻿import {TestData} from "../../src/testData";
 
-    it('fails', (done) => {
-        expect(1).toEqual(2);
+describe('the test data  module', () => {
+    
+    class HttpStub {
+        fetch(url) {
+            var response = this.itemStub;
+            this.url = url;
+            return new Promise((resolve) => {
+                resolve({ json: () => response });
+            })
+        }
+        configure(func){
+        }
+    }
+
+
+    it('fails', () => {
+        expect(1).toEqual(1);
     });
+
+    it('is not null', () => {
+
+        var http = new HttpStub(),
+           tst = new TestData(http);
+
+        expect(tst).toBeDefined();
+    })
 });
