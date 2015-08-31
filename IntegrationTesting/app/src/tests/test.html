@@ -21,7 +21,7 @@
 
         <label for="inputRequest" class="col-sm-2 control-label">Request</label>
         <div class="col-sm-10">
-            <textarea id="inputRequest"  cols="100" rows="10">${model.InputJson} </textarea>
+            <textarea id="inputRequest" value.bind="model.EditInputJson" cols="100" rows="10"> </textarea>
         </div>
 
     </div>
@@ -35,25 +35,19 @@
         </div>
     </div>
 
-    <div show.bind="ShowTestResults">
-        <div class="form-group">
 
-            <label for="actualOutPut" class="control-label col-sm-2">Actual Response</label>
-            <div class="col-sm-10">
-                <pre>
-                <code id="actualOutPut" class="JasonResult">${ActualOutput}
+    <div class="form-group" show.bind="ShowTestResults">
+
+        <label for="actualOutPut" class="control-label col-sm-2">Actual Response</label>
+        <div class="col-sm-10">
+            <pre>
+            <code class="JasonResult">${ActualOutput}
           </code>
         </pre>
-            </div>
-
         </div>
-
-        <div class="form-group" show.bind="!ShowTestResults">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button click.trigger="refreshTest()" class="btn btn-primary">Done</button>
-            </div>
-        </div>
+        <button click.trigger="refreshTest()" class="btn btn-primary">Done</button>
     </div>
+
 
     <div class="form-group" show.bind="!ShowTestResults">
         <div class="col-sm-offset-2 col-sm-10">

@@ -28,12 +28,14 @@ namespace IntegrationTesting.Controllers
         // POST: api/SaveTest
         public string Post([FromBody] TestItem item)
         {
+            string resutlJason = "{'result':'it works'}";
             // DbUtility.UpdateJson(item.ContractId, item.TestNumber, item.InputJson);
+            /*
             var contractName = DbUtility.GetContractNameById(item.ContractId);
 
             var url = RsApi.GetUrl(contractName);
             var resutlJason = RsApi.Request(item.InputJson, url);
-
+            */
             return resutlJason;
         }
 

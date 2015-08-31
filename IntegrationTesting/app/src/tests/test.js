@@ -1,18 +1,17 @@
 ﻿import {inject} from "aurelia-framework";
-import {TestData} from "./testData";
+import {TestData} from "../testData";
 
 @inject(TestData)
 export class Test
 {
 
+   
     constructor(testData) {
+        this.data = testData;
         this.ShowTestResults = false;
         this.model = null;
-        this.data = testData;
         this.ActualOutput = null;
-        
     }
-    
 
     activate (model) {
         
@@ -22,24 +21,15 @@ export class Test
     }
 
     runTest() {
-        this.ShowTestResults = true;
-        
-        this.data.runTest(model).then((result) => {
+
+        this.data.runTest(this.model).then( result => {
+            this.ShowTestResults = true;
             this.ActualOutput = result;
         });
     }
 
     refreshTest() {
         this.ShowTestResults = false;
-    }
-
-    saveTest() {
-
-        this.ShowTestResults = true;
-        this.data.saveTest(model).then((result) => {
-            this.ShowTestResults = false;
-        });
-
     }
 
 }

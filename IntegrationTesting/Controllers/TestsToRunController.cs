@@ -13,9 +13,10 @@ namespace IntegrationTesting.Controllers
         // GET api/<controller>/5
         public List<TestItem> Get(int id, int cId, string testNumber)
         {
-
+            List<TestItem> result;
             //  List<TestItem> result = DbUtility.GetTestItems(id, testNumber);
-           List<TestItem> result = DbUtility.GetTestItems(id,cId, testNumber);
+            //  result = DbUtility.GetTestItems(id,cId, testNumber);
+            result = new List<TestItem>() {new TestItem() {ContractId = 1, InputJson = "{'foo': 'bar'",OutputJson = "{result",TestFileDescription = "mock data", TestNumber = "1"} };
             return result;
         }
  

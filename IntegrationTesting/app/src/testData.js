@@ -9,6 +9,7 @@ let baseContractsUrl = "../api/Contracts/";
 
 //api/TestsToRun/1?cId=12&testNumber=4-10
 let baseTests = "../api/TestsToRun/";
+let baserunTets = "../api/TestResults";
 
 @inject(HttpClient)
 export class TestData {
@@ -88,13 +89,13 @@ export class TestData {
     }
 
     runTest(model) {
-        return this.post(baserunTets, model).then(response => {
-            return response;
+        return this.http.post(baserunTets, model).then(response => {
+            return response.content;
         });
     }
 
     saveTest(model) {
-        return this.post(TestAdd, model).then(response => {
+        return this.http,post(TestAdd, model).then(response => {
             return response;
         });
     }
