@@ -10,13 +10,12 @@ export class TestsAdmin{
         this.applications = null;
         this.data = testData;  
         this.selectedContract = null ;
-       
-
+        this.selectedApplication = null;
     }
 
     changeApplication() {
 
-        var app = this.getApplicationObject(this.selectedApplication);
+        var app =  this.applications.filter((app) => { return app.ApplicationName === this.selectedApplication })[0];
         this.data.CurrentApplication = app;
         this.displayContracts();
     }
@@ -42,6 +41,11 @@ export class TestsAdmin{
 
         this.data.getContracts(this.data.CurrentApplication.Id).then(contracts => {
             this.contracts = contracts;
+             
+
+            if (this.data.CurrentContract) {
+                this.selectedContract = this.data.CurrentContract.ContractName; 
+            }   
 
         }); 
     }
@@ -55,7 +59,5 @@ export class TestsAdmin{
         
     }
 
-    getAplicationObject(appName) {
-        return this.applications.filter((app) => { return app.ApplicationName === appName })[0];
-    }
+    
 }
